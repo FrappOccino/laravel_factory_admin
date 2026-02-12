@@ -4,9 +4,7 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <title>
-            Factory Admin
-        </title>
+        <title>{{ config('app.name', 'Laravel') }}</title>
 
         <!-- Fonts -->
         <link rel="preconnect" href="https://fonts.bunny.net">
@@ -276,11 +274,4 @@
             <div class="h-14.5 hidden lg:block"></div>
         @endif
     </body>
-    <script type="module">
-        $(document).ready(function() {
-            console.log("jQuery is working!");
-            $('body').css('background-color', 'lightblue');
-        });
-
-    </script>
 </html>
