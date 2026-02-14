@@ -4,8 +4,8 @@
     <div class="container mx-auto mt-6">
         <h3 class="text-2xl font-semibold mb-4">Users List</h3>
 
-        <div class="overflow-x-auto">
-            <table id="users-table" class="min-w-full divide-y divide-gray-200 table-auto">
+        <div class="">
+            <table id="users-table" class="">
                 <thead class="bg-gray-100">
                     <tr>
                         <th class="px-4 py-2 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">#</th>

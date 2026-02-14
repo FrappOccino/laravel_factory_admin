@@ -19,6 +19,6 @@ class FactoriesRepository extends BaseRepository implements FactoriesRepositoryI
     }
 
     public function datatable(){
-        return DB::table('users');
+        return DB::table('factories');
     }
 }

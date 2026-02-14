@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Repositories\Factories\FactoriesRepositoryInterface;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Yajra\DataTables\DataTables;
@@ -16,11 +17,12 @@ class FactoriesController extends Controller
     }
     public function index()
     {
-        return view('admin.user.index');
+        // dd('123');
+        return view('admin.factories.index');
     }
 
     public function datatable(Request $request, DataTables $dataTables){
-        $users = DB::table('users');
+        $users = $this->factoriesRepo->datatable();
 
         return $dataTables->of($users)->toJson();
     }

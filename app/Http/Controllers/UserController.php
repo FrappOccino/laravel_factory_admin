@@ -22,10 +22,11 @@ class UserController extends Controller
         return view('admin.user.index');
     }
 
-    public function datatable(Request $request, DataTables $dataTables){
+    public function datatable(Request $request, DataTables $dataTables)
+    {
+        // dd('index');
         $users = $this->userRepo->datatable();
 
         return $dataTables->of($users)->toJson();
     }
-
 }
