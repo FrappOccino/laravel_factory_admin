@@ -16,6 +16,7 @@ class AuthController extends Controller
 
     public function postLogin(LoginRequest $request)
     {
+        // dd('postlogin');
         $credentials = $request->only('email', 'password');
 
         // dd(Auth::attempt($credentials));
@@ -23,21 +24,21 @@ class AuthController extends Controller
         if (Auth::attempt($credentials)) {
             $request->session()->regenerate();
 
-            // return redirect(route('admin.index'));
+            return redirect(route('admin.index'));
 
-            return response()->json([
-                'success' => false,
-                'url' => route('admin.index'),
-            ]);
+            // return response()->json([
+            //     'success' => false,
+            //     'url' => route('admin.index'),
+            // ]);
         }
 
-        return response()->json(
-            [
-                'success' => false,
-                'message' => 'invalid credentials',
-            ],
-            422,
-        );
+        // return response()->json(
+        //     [
+        //         'success' => false,
+        //         'message' => 'invalid credentials',
+        //     ],
+        //     422,
+        // );
     }
 
     public function logout()

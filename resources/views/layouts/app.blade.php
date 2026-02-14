@@ -1,13 +1,9 @@
-@extends('base')
-<body>
+@extends('layouts.base')
+
+@section('content')
     @include('components.navbar')
-    @yield('content')
-</body>
-<script type="module">
-    // $(document).ready(function() {
-    //     console.log("jQuery is working!");
-    //     $('body').css('background-color', 'lightblue');
-    // });
 
-</script>
-
+    <section class="px-4 py-6 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+        @yield('page-content')
+    </section>
+@endsection

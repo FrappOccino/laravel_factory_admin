@@ -1,14 +1,14 @@
-@extends('layouts.base')
+@extends('layouts.admin')
 
-@section('title', 'admin')
+@section('page-content')
+    <div class="container mx-auto mt-6">
+        <h3 class="text-2xl font-semibold mb-4">Dashboard</h3>
 
-@section('content')
-    <div class="bg-white p-6 rounded shadow">
-        <h2 class="text-2xl font-semibold mb-4">Dashboard</h2>
-        <p>Welcome to Factory Admin dashboard.</p>
+
     </div>
-    <form method="POST" action="{{route('admin.logout')}}">
-        @csrf
-        <input type="submit" value="Submit">
-    </form>
 @endsection
+
+@push('scripts')
+    <script type="module">
+    </script>
+@endpush
