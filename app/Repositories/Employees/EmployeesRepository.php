@@ -1,16 +1,16 @@
 <?php
 
-namespace App\Repositories\Factories;
+namespace App\Repositories\Employees;
 
-use App\Models\Factories;
+use App\Models\Employees;
 use App\Repositories\Base\BaseRepository;
 use Illuminate\Support\Facades\DB;
 
-class FactoriesRepository extends BaseRepository implements FactoriesRepositoryInterface
+class EmployeesRepository extends BaseRepository implements EmployeesRepositoryInterface
 {
     protected $model;
     
-    public function __construct(Factories $model)
+    public function __construct(Employees $model)
     {
         // parent::__construct($model);
         $this->model = $model;
@@ -23,9 +23,9 @@ class FactoriesRepository extends BaseRepository implements FactoriesRepositoryI
 
     public function datatable(){
 
-        $select = "SELECT * FROM lfa_factories ";
+        $select = "SELECT * FROM lfa_employees ";
 
-        $qry = DB::raw("({$select}) as factories");
+        $qry = DB::raw("({$select}) as employees");
         return DB::table($qry)->orderBy('id','desc');
     }
 }

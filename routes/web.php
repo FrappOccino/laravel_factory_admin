@@ -1,11 +1,12 @@
 <?php
 
-use App\Http\Controllers\ProfileController;
-use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\EmployeesController;
 use App\Http\Controllers\FactoriesController;
+use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\UserController;
+use Illuminate\Support\Facades\Route;
 
 
 Route::get('/', function () {
@@ -29,7 +30,7 @@ Route::get('/', function () {
 
 /*
 |--------------------------------------------------------------------------
-| Guest Routes (only not logged in users)
+| Guest Routes 
 |--------------------------------------------------------------------------
 */
 Route::middleware(['guest'])->name('auth.')->group(function () {
@@ -41,7 +42,7 @@ Route::middleware(['guest'])->name('auth.')->group(function () {
 
 /*
 |--------------------------------------------------------------------------
-| Protected Routes (must be logged in)
+| Protected Routes 
 |--------------------------------------------------------------------------
 */
 Route::middleware('auth')->name('admin.')->group(function () {
@@ -49,8 +50,25 @@ Route::middleware('auth')->name('admin.')->group(function () {
     Route::post('logout', [AuthController::class, 'logout'])->name('logout');
     Route::get('admin/user', [UserController::class, 'index'])->name('user.index');
     Route::get('admin/user/datatable', [UserController::class, 'datatable'])->name('user.datatable');
+
+    // Factories
     Route::get('admin/factories', [FactoriesController::class, 'index'])->name('factories.index');
     Route::get('admin/factories/datatable', [FactoriesController::class, 'datatable'])->name('factories.datatable');
+    Route::post('admin/factories/create', [FactoriesController::class, 'postCreate'])->name('factories.post.create');
+    Route::get('admin/factories/create', [FactoriesController::class, 'create'])->name('factories.create');
+    Route::get('admin/factories/edit/{id}', [FactoriesController::class, 'update'])->name('factories.update');
+    Route::post('admin/factories/edit/', [FactoriesController::class, 'postUpdate'])->name('factories.post.update');
+    Route::delete('admin/factories/{id}', [FactoriesController::class, 'delete'])->name('factories.delete');
+    
+    // Employees
+    Route::get('admin/employees', [EmployeesController::class, 'index'])->name('employees.index');
+    Route::get('admin/employees/datatable', [EmployeesController::class, 'datatable'])->name('employees.datatable');
+    Route::post('admin/employees/create', [EmployeesController::class, 'postCreate'])->name('employees.post.create');
+    Route::get('admin/employees/create', [EmployeesController::class, 'create'])->name('employees.create');
+    Route::get('admin/employees/edit/{id}', [EmployeesController::class, 'update'])->name('employees.update');
+    Route::post('admin/employees/edit/', [EmployeesController::class, 'postUpdate'])->name('employees.post.update');
+    Route::delete('admin/employees/{id}', [EmployeesController::class, 'delete'])->name('employees.delete');
+
 });
 
 require __DIR__.'/auth.php';

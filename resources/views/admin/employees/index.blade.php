@@ -3,8 +3,8 @@
 @section('page-content')
     <div class="container w-100 mt-6">
         <div class="flex justify-between">
-            <h3 class="text-3xl font-semibold mb-4">Factories</h3>
-            <form action="{{ route('admin.factories.create') }}" method="GET">
+            <h3 class="text-3xl font-semibold mb-4">Employees</h3>
+            <form action="{{ route('admin.employees.create') }}" method="GET">
                 <button type="submit"
                     class="mb-2 justify-end bg-green-600 hover:bg-green-700 text-white font-semibold px-5 py-2 rounded-lg shadow transition duration-200">
                     Create
@@ -12,21 +12,17 @@
             </form>
         </div>
         <div class="overflow-x-auto">
-            <table id="factories-table" class="min-w-full divide-y divide-gray-200 table-auto">
+            <table id="employees-table" class="min-w-full divide-y divide-gray-200 table-auto">
                 <thead class="bg-gray-100">
                     <tr>
                         {{-- <th class="px-4 py-2 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">#</th> --}}
                         <th class="px-4 py-2 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">ID</th>
-                        <th class="px-4 py-2 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Factory
-                            Name</th>
-                        <th class="px-4 py-2 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Location
-                        </th>
-                        <th class="px-4 py-2 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Email
-                        </th>
-                        <th class="px-4 py-2 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Website
-                        </th>
-                        <th class="px-4 py-2 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Action
-                        </th>
+                        <th class="px-4 py-2 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">First Name</th>
+                        <th class="px-4 py-2 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Last Name</th>
+                        <th class="px-4 py-2 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Factory ID</th>
+                        <th class="px-4 py-2 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Email</th>
+                        <th class="px-4 py-2 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Phone</th>
+                        <th class="px-4 py-2 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Action</th>
                     </tr>
                 </thead>
                 <tbody class="bg-white divide-y divide-gray-200">
@@ -40,10 +36,10 @@
 @push('scripts')
     <script type="module">
         $(document).ready(function() {
-            $('#factories-table').DataTable({
+            $('#employees-table').DataTable({
                 processing: true,
                 serverSide: true,
-                ajax: "{{ route('admin.factories.datatable') }}",
+                ajax: "{{ route('admin.employees.datatable') }}",
                 columns: [
                     // {
                     //     data: null,
@@ -57,24 +53,27 @@
                         data: 'id'
                     },
                     {
-                        data: 'factory_name'
+                        data: 'firstname'
                     },
                     {
-                        data: 'location'
+                        data: 'lastname'
+                    },
+                    {
+                        data: 'factory_id'
                     },
                     {
                         data: 'email'
                     },
                     {
-                        data: 'website'
+                        data: 'phone'
                     },
                     {
                         data: null,
                         render: function(full, data, type, row) {
                             console.table(full);
                             return `
-                                <a href="{{ route('admin.factories.index') }}/edit/${full.id}" class="text-blue-500 mr-2">Edit</a>
-                                <button href="{{ route('admin.factories.index') }}/${full.id}" class="delete-factory text-red-500">Delete</button>
+                                <a href="{{ route('admin.employees.index') }}/edit/${full.id}" class="text-blue-500 mr-2">Edit</a>
+                                <button href="{{ route('admin.employees.index') }}/${full.id}" class="delete-factory text-red-500">Delete</button>
                             `;
                         },
                         searchable: false,
@@ -93,7 +92,7 @@
         });
 
         function reloadTable() {
-            $('#factories-table').DataTable().ajax.reload(null, false); 
+            $('#employees-table').DataTable().ajax.reload(null, false); 
         }
 
         $(document).on('click', '.delete-factory', function(e) {

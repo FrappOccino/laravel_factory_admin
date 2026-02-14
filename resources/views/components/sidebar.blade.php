@@ -9,15 +9,12 @@
             <a href="{{ route('admin.factories.index') }}" class="block px-4 py-2 rounded hover:bg-gray-100 transition">
                 Factories
             </a>
-            <a href="#" class="block px-4 py-2 rounded hover:bg-gray-100 transition">
+            <a href="{{ route('admin.employees.index') }}" class="block px-4 py-2 rounded hover:bg-gray-100 transition">
                 Employees
             </a>
-            <a href="{{ route('admin.user.index') }}" class="block px-4 py-2 rounded hover:bg-gray-100 transition">
-                Users
-            </a>
-            <a href="#" class="block px-4 py-2 rounded hover:bg-gray-100 transition">
-                Settings
-            </a>
+            {{-- <a href="{{ route('admin.user.index') }}" class="block px-4 py-2 rounded hover:bg-gray-100 transition">
+                User Activity
+            </a> --}}
             <form method="POST" action="{{ route('admin.logout') }}">
                 @csrf
                 <button type="submit" class="w-full text-left px-4 py-2 rounded hover:bg-gray-100 transition">
@@ -29,7 +26,7 @@
 </aside>
 
 <!-- Mobile Toggle Button -->
-<div class="md:hidden fixed top-4 left-4 z-50">
+<div class="md:hidden fixed top-4 right-4 z-50">
     <button id="mobile-menu-btn" class="p-2 bg-gray-200 rounded shadow-md">
         ☰
     </button>

@@ -47,6 +47,6 @@ class AuthController extends Controller
 
         request()->session()->invalidate();
 
-        return redirect()->route('auth.login');
+        return redirect()->route('login');
     }
 }

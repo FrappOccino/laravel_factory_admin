@@ -6,6 +6,10 @@ use Illuminate\Support\ServiceProvider;
 use Illuminate\Cache\RateLimiting\Limit;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\RateLimiter;
+use App\Models\Factories;
+use App\Models\Employees;
+use App\Observers\ModelActivityObserver;
+
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -25,5 +29,8 @@ class AppServiceProvider extends ServiceProvider
         RateLimiter::for('web', function (Request $request) {
             return Limit::perMinute(60)->by($request->user()?->id ?: $request->ip());
         });
+
+        Factories::observe(ModelActivityObserver::class);
+        Employees::observe(ModelActivityObserver::class);
     }
 }
