@@ -37,7 +37,7 @@
     class="fixed inset-y-0 left-0 w-64 bg-white shadow-md transform -translate-x-full transition-transform duration-200 md:hidden z-50">
     <div class="p-6">
         <h1 class="text-2xl font-bold mb-8">Factory Admin</h1>
-        <nav class="space-y-2">
+        {{-- <nav class="space-y-2">
             <a href="{{ route('admin.index') }}" class="block px-4 py-2 rounded hover:bg-gray-100 transition">
                 Dashboard
             </a>
@@ -46,6 +46,23 @@
             </a>
             <a href="#" class="block px-4 py-2 rounded hover:bg-gray-100 transition">
                 Settings
+            </a>
+            <form method="POST" action="{{ route('admin.logout') }}">
+                @csrf
+                <button type="submit" class="w-full text-left px-4 py-2 rounded hover:bg-gray-100 transition">
+                    Logout
+                </button>
+            </form>
+        </nav> --}}
+        <nav class="space-y-2">
+            <a href="{{ route('admin.index') }}" class="block px-4 py-2 rounded hover:bg-gray-100 transition">
+                Dashboard
+            </a>
+            <a href="{{ route('admin.factories.index') }}" class="block px-4 py-2 rounded hover:bg-gray-100 transition">
+                Factories
+            </a>
+            <a href="{{ route('admin.employees.index') }}" class="block px-4 py-2 rounded hover:bg-gray-100 transition">
+                Employees
             </a>
             <form method="POST" action="{{ route('admin.logout') }}">
                 @csrf

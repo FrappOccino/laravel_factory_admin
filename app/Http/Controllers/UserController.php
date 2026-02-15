@@ -24,7 +24,6 @@ class UserController extends Controller
 
     public function datatable(Request $request, DataTables $dataTables)
     {
-        // dd('index');
         $users = $this->userRepo->datatable();
 
         return $dataTables->of($users)->toJson();
