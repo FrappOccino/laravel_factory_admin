@@ -7,7 +7,6 @@ use App\Services\ModelActivityLogger;
 
 class ModelActivityObserver
 {
-    // We'll store old attributes temporarily here
     protected $oldAttributes = [];
 
     public function created(Model $model)
@@ -17,7 +16,6 @@ class ModelActivityObserver
 
     public function updating(Model $model)
     {
-        // Save old attributes in the observer, not on the model
         $this->oldAttributes[$model->getKey()] = $model->getOriginal();
     }
 
@@ -28,7 +26,6 @@ class ModelActivityObserver
 
         ModelActivityLogger::log('updated', $model, $old, $new);
 
-        // Clean up after logging
         unset($this->oldAttributes[$model->getKey()]);
     }
 
