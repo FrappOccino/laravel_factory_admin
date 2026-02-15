@@ -12,12 +12,10 @@ class Employees extends Model
 
     protected $table = 'employees';
 
-    protected $fillable = [
-        'firstname',
-        'lastname',
-        'factory_id',
-        'email',
-        'phone',
-    ];
+    protected $fillable = ['firstname', 'lastname', 'factory_id', 'email', 'phone'];
 
+    public function manufactory()
+    {
+        return $this->belongsTo(Factories::class, 'factory_id', 'id');
+    }
 }
