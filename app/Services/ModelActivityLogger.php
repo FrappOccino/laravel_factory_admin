@@ -11,7 +11,7 @@ class ModelActivityLogger
     public static function log(string $event, Model $model, array $old = [], array $new = [])
     {
         $userId = Auth::id() ?? 'guest';
-
+    
         $message = [
             'event'      => $event,
             'model'      => class_basename($model),

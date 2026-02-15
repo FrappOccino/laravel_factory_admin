@@ -19,7 +19,8 @@
 
         <form action="{{ route('admin.factories.post.update') }}" method="POST">
             @csrf
-
+            @method('PUT')
+            
             <!-- Employee First Name (Required) -->
             <div class="mb-4">
                 <label for="firstname" class="block font-medium mb-1">First Name <span class="text-red-500">*</span></label>

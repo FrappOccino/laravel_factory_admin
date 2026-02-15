@@ -14,7 +14,7 @@ class ModelActivityObserver
 
     public function updating(Model $model)
     {
-        $model->oldAttributes = $model->getOriginal();
+        $model->oldAttributes = $model->getOriginal() ?? null;
     }
 
     public function updated(Model $model)

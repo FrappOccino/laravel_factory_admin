@@ -10,7 +10,6 @@ use App\Models\Factories;
 use App\Models\Employees;
 use App\Observers\ModelActivityObserver;
 
-
 class AppServiceProvider extends ServiceProvider
 {
     /**
@@ -30,7 +29,9 @@ class AppServiceProvider extends ServiceProvider
             return Limit::perMinute(60)->by($request->user()?->id ?: $request->ip());
         });
 
-        Factories::observe(ModelActivityObserver::class);
-        Employees::observe(ModelActivityObserver::class);
+        if (!app()->runningUnitTests()) {
+            Factories::observe(ModelActivityObserver::class);
+            Employees::observe(ModelActivityObserver::class);
+        }
     }
 }
