@@ -42,8 +42,6 @@
 | NPM                | 11.6.2      |
 | MySQL              | 8.0.30      |
 
-```
-```
 ## Installation
 
 Clone repository:
