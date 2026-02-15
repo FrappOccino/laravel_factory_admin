@@ -3,7 +3,7 @@
 @section('page-content')
     <div class="w-100 bg-white p-6 rounded shadow">
         <div class="flex justify-between">
-            <h2 class="text-2xl font-semibold mb-4">Edit Factory</h2>
+            <h2 class="text-2xl font-semibold mb-4">Edit Employee</h2>
             <x-go-back-button />
         </div>
         <!-- Display Validation Errors -->
@@ -17,10 +17,8 @@
             </div>
         @endif
 
-        <form action="{{ route('admin.factories.post.update') }}" method="POST">
+        <form action="{{ route('admin.employees.post.update') }}" method="POST">
             @csrf
-            @method('PUT')
-            
             <!-- Employee First Name (Required) -->
             <div class="mb-4">
                 <label for="firstname" class="block font-medium mb-1">First Name <span class="text-red-500">*</span></label>
@@ -71,11 +69,19 @@
                 @enderror
             </div>
 
+            <input type="number" name="employee_id" id="employee_id" value="{{ $employees->id }}" hidden>
+
+
             <!-- Submit Button -->
-            <div>
+            <div class="flex">
                 <button type="submit" class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">
                     Update Employee
                 </button>
+                @if (session('success'))
+                    <div class="w-fit bg-green-100 text-green-700 p-3 rounded">
+                        {{ session('success') }}
+                    </div>
+                @endif
             </div>
 
         </form>

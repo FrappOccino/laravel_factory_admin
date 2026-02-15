@@ -48,9 +48,17 @@ class EmployeesController extends Controller
     }
     public function postUpdate(EmployeesRequest $request)
     {
-        $this->employeesRepo->find($request->input('id'))->update($request->validated());
-
-        return redirect()->route('admin.employees.index');
+        $id = $request->input('employee_id');
+        $data['firstname'] = $request->input('firstname');
+        $data['latname'] = $request->input('latname');
+        $data['factory_id'] = $request->input('factory_id');
+        $data['email'] = $request->input('email');
+        $data['phone'] = $request->input('phone');
+        $this->employeesRepo->find($id)->update($data);
+        
+        return redirect()
+            ->route('admin.employees.update', $id)
+            ->with('success', 'Employee updated successfully!');
     }
 
     public function delete(Request $request, $id)

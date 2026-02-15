@@ -34,10 +34,11 @@ class FactoriesController extends Controller
     }
     public function postCreate(FactoryRequest $request)
     {
+        // dd($request->input());
         $this->factoriesRepo->create($request->validated());
 
         // return redirect()->route('admin.factories.index');
-        return view('admin.factories.create')->with('success', 'Factory created successfully!');
+        return redirect()->route('admin.factories.create')->with('success', 'Factory created successfully!');
     }
 
     public function update(Request $request, $id)
@@ -48,9 +49,17 @@ class FactoriesController extends Controller
     }
     public function postUpdate(FactoryRequest $request)
     {
-        $this->factoriesRepo->find($request->input('id'))->update($request->validated());
-
-        return redirect()->route('admin.factories.index');
+        // dd('12312');
+        $id = $request->input('factory_id');
+        $data['factory_name'] = $request->input('factory_name');
+        $data['location'] = $request->input('location');
+        $data['email'] = $request->input('email');
+        $data['website'] = $request->input('website');
+        $this->factoriesRepo->find($id)->update($data);
+        
+        return redirect()
+            ->route('admin.factories.update', $id)
+            ->with('success', 'Factory updated successfully!');
     }
 
     public function delete(Request $request, $id)

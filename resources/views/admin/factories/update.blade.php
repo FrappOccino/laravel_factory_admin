@@ -62,18 +62,19 @@
             </div>
 
             {{-- <label for="id" class="hidde"></label> --}}
-            <input type="url" name="website" id="website" value="{{ $factory->id }}" hidden>
+            <input type="number" name="factory_id" id="factory_id" value="{{ $factory->id }}" hidden>
 
             <!-- Submit Button -->
-            <div>
-                <button type="submit" class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">
-                    Update
-                </button>
+            <div class="flex">
+                <input type="submit" value="Update" class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">
+                </input>
+                @if (session('success'))
+                    <div class="w-fit bg-green-100 text-green-700 p-3 rounded">
+                        {{ session('success') }}
+                    </div>
+                @endif
             </div>
         </form>
     </div>
 @endsection
 
-@push('scripts')
-    <script type="module"></script>
-@endpush

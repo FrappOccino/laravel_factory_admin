@@ -57,6 +57,7 @@ Route::middleware('auth')->name('admin.')->group(function () {
     Route::post('admin/factories/create', [FactoriesController::class, 'postCreate'])->name('factories.post.create');
     Route::get('admin/factories/create', [FactoriesController::class, 'create'])->name('factories.create');
     Route::get('admin/factories/edit/{id}', [FactoriesController::class, 'update'])->name('factories.update');
+    // Route::put('admin/factories/edit/', [FactoriesController::class, 'postUpdate'])->name('factories.post.update');
     Route::post('admin/factories/edit/', [FactoriesController::class, 'postUpdate'])->name('factories.post.update');
     Route::delete('admin/factories/{id}', [FactoriesController::class, 'delete'])->name('factories.delete');
     
@@ -66,7 +67,8 @@ Route::middleware('auth')->name('admin.')->group(function () {
     Route::post('admin/employees/create', [EmployeesController::class, 'postCreate'])->name('employees.post.create');
     Route::get('admin/employees/create', [EmployeesController::class, 'create'])->name('employees.create');
     Route::get('admin/employees/edit/{id}', [EmployeesController::class, 'update'])->name('employees.update');
-    Route::put('admin/employees/edit/', [EmployeesController::class, 'postUpdate'])->name('employees.post.update');
+    Route::post('admin/employees/edit/', [EmployeesController::class, 'postUpdate'])->name('employees.post.update');
+    // Route::put('admin/employees/edit/', [EmployeesController::class, 'postUpdate'])->name('employees.post.update');
     Route::delete('admin/employees/{id}', [EmployeesController::class, 'delete'])->name('employees.delete');
 
 });

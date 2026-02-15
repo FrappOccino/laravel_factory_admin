@@ -24,7 +24,7 @@ class FactoryRequest extends FormRequest
         return [
             'factory_name' => ['required','string','max:255'],
             'location' => ['required','string','max:255'],
-            'email' => ['nullable','email','max:255'],
+            'email' => 'nullable|email|unique:factories,email',
             'website' => ['nullable','url','max:255'],
         ];
     }

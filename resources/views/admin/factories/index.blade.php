@@ -12,7 +12,7 @@
             </form>
         </div>
         <div class="overflow-x-auto">
-            <table id="factories-table" class="min-w-full divide-y divide-gray-200 table-auto">
+            <table id="factories-table" class="min-w-full divide-y divide-gray-200 table-auto rounded-lg border-2 border-gray-300">
                 <thead class="bg-gray-100">
                     <tr>
                         {{-- <th class="px-4 py-2 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">#</th> --}}

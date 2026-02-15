@@ -66,12 +66,16 @@
                 <button type="submit" class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">
                     Create Factory
                 </button>
+                @if (session('success'))
+                    <div class="w-fit bg-green-100 text-green-700 p-3 rounded">
+                        {{ session('success') }}
+                    </div>
+                @endif
             </div>
         </form>
     </div>
 @endsection
 
 @push('scripts')
-    <script type="module">
-    </script>
+    <script type="module"></script>
 @endpush
