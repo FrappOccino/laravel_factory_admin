@@ -1,15 +1,16 @@
 <!-- Desktop Sidebar -->
-<aside class="bg-white w-64 min-h-screen shadow-md hidden md:block">
-    <div class="p-6">
+<aside class="w-64 h-100x shadow-md hidden md:block rounded-lg border-2 border-solid">
+    <div class="p-6 fixed">
         <h1 class="text-2xl font-bold mb-8">Factory Admin</h1>
         <nav class="space-y-2">
-            <a href="{{ route('admin.index') }}" class="block px-4 py-2 rounded hover:bg-gray-100 transition">
+            <a href="{{ route('admin.index') }}" class="block px-4 py-2 rounded hover:bg-slate-950 hover:text-stone-50 transition">
                 Dashboard
             </a>
-            <a href="{{ route('admin.factories.index') }}" class="block px-4 py-2 rounded hover:bg-gray-100 transition">
+            
+            <a href="{{ route('admin.factories.index') }}" class="block px-4 py-2 rounded hover:bg-slate-950 hover:text-stone-50 transition">
                 Factories
             </a>
-            <a href="{{ route('admin.employees.index') }}" class="block px-4 py-2 rounded hover:bg-gray-100 transition">
+            <a href="{{ route('admin.employees.index') }}" class="block px-4 py-2 rounded hover:bg-slate-950 hover:text-stone-50 transition">
                 Employees
             </a>
             {{-- <a href="{{ route('admin.user.index') }}" class="block px-4 py-2 rounded hover:bg-gray-100 transition">
@@ -17,7 +18,7 @@
             </a> --}}
             <form method="POST" action="{{ route('admin.logout') }}">
                 @csrf
-                <button type="submit" class="w-full text-left px-4 py-2 rounded hover:bg-gray-100 transition">
+                <button type="submit" class="block px-4 py-2 text-rose-500 rounded hover:bg-slate-950 hover:text-stone-50 transition">
                     Logout
                 </button>
             </form>

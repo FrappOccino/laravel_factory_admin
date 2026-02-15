@@ -89,7 +89,7 @@ DB_PORT=3306
 DB_DATABASE=laravel_factory_admin
 DB_USERNAME=root
 DB_PASSWORD=
-DB_PREFIX='lfa'
+DB_PREFIX='lfa_'
 ```
 
 ---
@@ -102,7 +102,7 @@ Run migrations:
 php artisan migrate
 ```
 
-Run seeders (optional):
+Run seeders:
 
 ```
 php artisan db:seed --class=UserSeeder
@@ -110,11 +110,6 @@ php artisan db:seed --class=EmployeesSeeder
 php artisan db:seed --class=FactorySeeder
 ```
 
-Run worker:
-
-```
-php artisan queue:work
-```
 
 ---
 
